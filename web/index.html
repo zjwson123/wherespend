@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+  <title>钱去哪了</title>
+  <meta name="description" content="一句话记账的手机账本">
+  <meta name="theme-color" content="#f6f5f3" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#131416" media="(prefers-color-scheme: dark)">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="钱去哪了">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <div class="brand">钱去哪了<small id="sync-time"></small></div>
+      <button class="icon-btn" id="btn-settings" aria-label="设置">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1.03 1.56V21a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-1.11-1.56 1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.7 1.7 0 0 0 .34-1.87 1.7 1.7 0 0 0-1.56-1.03H3a2 2 0 1 1 0-4h.09a1.7 1.7 0 0 0 1.56-1.11 1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.7 1.7 0 0 0 1.87.34h.08a1.7 1.7 0 0 0 1.03-1.56V3a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1.03 1.56 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.7 1.7 0 0 0-.34 1.87v.08a1.7 1.7 0 0 0 1.56 1.03H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.51 1.03z"/></svg>
+      </button>
+    </header>
+
+    <main id="main"></main>
+
+    <nav class="tabbar">
+      <div class="tabbar-inner">
+        <button class="tab on" data-tab="overview">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.8V21h14V9.8"/><path d="M9.5 21v-6h5v6"/></svg>
+          概览
+        </button>
+        <button class="tab" data-tab="list">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+          明细
+        </button>
+        <button class="tab" data-tab="stats">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg>
+          统计
+        </button>
+      </div>
+    </nav>
+  </div>
+
+  <!-- 设置抽屉 -->
+  <div class="sheet" id="sheet" aria-hidden="true">
+    <h3>关于这本账</h3>
+    <div class="row"><span>记录方式</span><b>飞书对机器人说一句话</b></div>
+    <div class="row"><span>数据存放</span><a id="link-bitable" href="#" target="_blank" rel="noopener">飞书多维表格</a></div>
+    <div class="row"><span>记录总数</span><b class="num" id="st-total">0</b></div>
+    <div class="row"><span>最近同步</span><b id="st-sync">-</b></div>
+    <div class="row"><span>记账原则</span><b>一笔只记一次，转账不算消费</b></div>
+    <div class="hint">在飞书里对机器人说「午饭 35」即可记账；语音消息和输入框语音输入都支持。查询：这个月花了多少。<br>把本页添加到主屏幕，用起来和 App 一样。</div>
+    <button class="btn" id="btn-refresh">立即刷新</button>
+  </div>
+
+  <!-- 访问密钥 -->
+  <div class="overlay" id="key-overlay" hidden>
+    <div class="key-card">
+      <h2>访问密钥</h2>
+      <p>这是你的私人账本，首次访问请输入密钥（服务启动日志里有，或问帮你搭建的人）。</p>
+      <input id="key-input" type="text" placeholder="access key" autocomplete="off">
+      <button class="btn" id="btn-key">进入账本</button>
+      <div class="key-err" id="key-err"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "name": "wherespend",
+  "version": "0.1.0",
+  "description": "钱去哪了 · 飞书一句话记账机器人 + 移动端账本",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "bootstrap": "node scripts/bootstrap.js",
+    "test": "node --test test/*.test.js"
+  },
+  "dependencies": {
+    "@larksuiteoapi/node-sdk": "^1.51.0"
+  }
+}
